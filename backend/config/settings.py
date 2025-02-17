@@ -130,7 +130,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+
+
+# Chemin absolu vers le build React
+REACT_BUILD_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), '..', 'frontend', 'dist')
+
+# Fichiers statiques
+STATICFILES_DIRS = [
+    REACT_BUILD_PATH,
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

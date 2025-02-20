@@ -13,6 +13,14 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+
+# Chargement des variables d'environnement depuis le fichier .env
+load_dotenv()
+
+
+# Accès aux variables
+NOAA_TOKEN = os.getenv('NOAA_TOKEN')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'corsheaders',
        
     'core', # Mon application  CurrentOcean
     'rest_framework', # Django REST Framework
@@ -58,6 +68,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    # URL du frontend
+    "http://localhost:5173",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -88,8 +105,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'currentocean',
-        'USER': 'currentocean_user',
-        'PASSWORD': 'Carmelithe3',
+        'USER': 'postgres',
+        'PASSWORD': 'Monolithe8',
         'HOST': 'localhost',
         'PORT': '5432',
     }

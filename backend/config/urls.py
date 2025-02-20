@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from core.views import index
 
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
@@ -29,6 +29,6 @@ urlpatterns = [
     # Route permettant d'afficher les requêtes du serveur.
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     
-    #Route pour afficher la page d'accueil de React.
-    path('', index, name="index"),
+    # Seulement si l'URL ne commence pas par admin ou api
+    re_path(r'^(?!admin|api).*$', index, name="index"),
 ]

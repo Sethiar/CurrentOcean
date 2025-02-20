@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import ocean_currents , index
+from .views import index
 
 urlpatterns = [
-    path('currents/', ocean_currents, name='currents_list'),
     path("", index, name="index"),
 ]

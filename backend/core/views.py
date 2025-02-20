@@ -1,18 +1,15 @@
 import os
 
+from rest_framework import generics
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.http import HttpResponse
 
-from core.models import Current  # Import depuis core
 
 # Vue qui va permettre de servir la page home du site currentocean
+# Redirection de l'utilisateur vers le frontend React
 def index(request):
+    """
+    Vue qui redirige l'utilisateur vers la page d'accueil de l'applicaiton React.
+    """
     return redirect("http://localhost:5173/")
-
-
-def ocean_currents(request):
-    currents = Current.objects.all()
-    return render(request, 'core/current.html', {'currents': currents})
-
-

@@ -1,0 +1,26 @@
+<!-- templates/core/current_list.html -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Courants Marins</title>
+</head>
+<body>
+    <h1>Liste des Courants Marins</h1>
+    <ul>
+        {% for current in currents %}
+            <li>
+                <strong>{{ current.name }}</strong> ({{ current.ocean }})
+                - Vitesse : {{ current.speed }} m/s
+                - Température : {{ current.temperature }}°C
+                - Salinité : {{ current.salinity }} PSU
+                - Force : {{ current.force }}
+                - Direction : {{ current.direction }}
+                - Profondeur : {{ current.depth }} m
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

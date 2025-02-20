@@ -1,9 +1,9 @@
 from django.urls import path, include
-from .views.views import CurrentListAPIView
 from api.views.gdp_views import GDPDataView
+from api.views.noaa_views import fetch_noaa_data_view
 
 urlpatterns = [
-    path('currents/', CurrentListAPIView.as_view(), name='api-current-list'),
+    path('fetch-noaa-data/', fetch_noaa_data_view, name='fetch-noaa-data'),
     path('gdp-data/', GDPDataView.as_view(), name='gdp_data'),
     path('blog/', include('blog.urls')),
 ]

@@ -215,7 +215,7 @@ const Home = () => {
         </Section>
 
         <Section>
-          <Button primary>Passer à l'exploration des courants marins</Button>
+          <Button primary href="/courants">Passer à l'exploration des courants marins</Button>
         </Section>
       </HomeContainer>
 
